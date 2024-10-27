@@ -158,3 +158,16 @@ declare module "http" {
     listener: (req: IncomingMessage, res: ServerResponse) => void,
   ): Server;
 }
+
+declare module "storage" {
+  const Storage: {
+    length: number;
+    setItem(key: string, value: string): void;
+    getItem(key: string): null | string;
+    removeItem(key: string): void;
+    clear(): void;
+    key(index: number): null | string;
+  };
+
+  export default Storage;
+}
