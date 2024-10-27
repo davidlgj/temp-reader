@@ -1,0 +1,20 @@
+{
+  "name": "temp-reader",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "esbuild src/index.ts --bundle --outfile=bundle.js --external:wifi --external:i2c --external:pico_cyw43 --external:http",
+    "dev": "npm run build && kaluma flash ./bundle.js --shell",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "David Jensen <david.lgj@gmail.com>",
+  "license": "MIT",
+  "description": "",
+  "dependencies": {
+    "@kaluma/cli": "^1.4.0",
+    "esbuild": "^0.24.0",
+    "typescript": "^5.6.3",
+    "@typescript/lib-dom": "npm:@types/kaluma"
+  }
+}
