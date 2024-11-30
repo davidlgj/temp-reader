@@ -152,11 +152,33 @@ declare module "http" {
     headers: Record<string, string>;
     url: string;
     complete: boolean;
+
+    // TODO: should be from readable
+    on(event: "data", callback: (chunk: Uint8Array) => void): void;
+    on(event: "end" | "close", callback: () => void): void;
+  }
+
+  class ClientRequest extends OutgoingMessage {
+    write(chunk: Uint8Array | string, callback?: () => void): boolean;
+    end(chunk: Uint8Array | string, callback?: () => void): this;
+
+    // TODO: should be from writble
+    on(event: "error", callback: () => void): void;
   }
 
   function createServer(
     listener: (req: IncomingMessage, res: ServerResponse) => void,
   ): Server;
+
+  function get(
+    options: {
+      host: string;
+      port: number;
+      path?: string;
+      headers?: Record<string, string>;
+    },
+    callback?: (response: IncomingMessage) => void,
+  ): ClientRequest;
 }
 
 declare module "storage" {

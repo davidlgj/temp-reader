@@ -25,8 +25,8 @@ export class SHT30 {
     //await delay(1); TODO: is this needed? Don't think so!
     var buf = this.i2c.read(3 /* 8 MSB, 8 LSB, 8 CRC */, SHT30_DEFAULT_ADDRESS);
     if (buf && buf.length === 3) {
-      console.log("read data");
-      console.log(buf);
+      // console.log("read data");
+      // console.log(buf);
 
       // First two values as MSB LSB of temp,
       const value8 = new Uint8Array([buf[0], buf[1]]);
@@ -45,7 +45,7 @@ export class SHT30 {
       const temp = this.toC(value[0]);
 
       console.log(value);
-      console.log(`Temp is ${temp}°C`);
+      // console.log(`Temp is ${temp}°C`);
       return temp;
     } else {
       console.log("Failed to read");

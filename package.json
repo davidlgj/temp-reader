@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "esbuild src/index.ts --bundle --outfile=bundle.js --external:wifi --external:i2c --external:pico_cyw43 --external:http",
+    "build": "esbuild src/index.ts --bundle --outfile=bundle.js --external:wifi --external:i2c --external:pico_cyw43 --external:http --external:storage",
     "dev": "npm run build && kaluma flash ./bundle.js --shell",
+    "shell": "kaluma shell",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
